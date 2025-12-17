@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sierra Vista | Direct Booking</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* Updated Color Palette & Font */
+        :root { --primary: #0F3D66; /* Dark Blue from logo */ --secondary: #4a7a9c; --dark: #0F3D66; --bg: #f0f4f8; --font: 'Nunito', sans-serif; }
+        
+        /* Typography Update */
+        body { font-family: var(--font); margin: 0; padding: 0; background: var(--bg); color: var(--dark); padding-bottom: 90px; }
+        h1, h2, h3, .brand-name, .new-price, .section-title, p { font-family: var(--font); }
+
+        /* HEADER & LOGO */
+        .header { background: white; padding: 25px 20px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(15, 61, 102, 0.1); position: sticky; top: 0; z-index: 100; }
+        .logo { height: 100px; margin-right: 15px; border-radius: 4px; }
+        .brand-name { font-size: 32px; font-weight: 800; color: var(--primary); letter-spacing: 0.5px; }
+
+        /* HERO */
+        .hero { position: relative; height: 50vh; overflow: hidden; } /* Slightly smaller hero since no price box overlap */
+        .hero img { width: 100%; height: 100%; object-fit: cover; }
+        .hero-overlay { position: absolute; bottom: 0; width: 100%; background: linear-gradient(to top, rgba(15, 61, 102, 0.7), transparent); height: 100px; }
+        
+        .container { padding: 0; max-width: 600px; margin: auto; }
+
+        /* SECTIONS */
+        .section-title { font-size: 24px; font-weight: 800; margin: 40px 0 5px; padding-left: 20px; color: var(--primary); border-left: 4px solid var(--primary); }
+        .section-desc { font-size: 15px; color: var(--secondary); margin: 0 0 20px 20px; font-weight: 400; max-width: 85%; }
+
+        /* PRICE TAG STYLING (NEW) */
+        .price-tag { font-size: 20px; color: var(--primary); font-weight: 800; margin-left: 20px; display: block; margin-bottom: 5px; }
+        .tax-note { font-size: 13px; color: #666; font-weight: 600; }
+
+        /* SCROLL GALLERY */
+        .scroll-gallery { 
+            display: flex; 
+            overflow-x: auto; 
+            scroll-snap-type: x mandatory; 
+            gap: 15px; 
+            padding: 0 20px 30px 20px; 
+            -webkit-overflow-scrolling: touch; 
+        }
+        .scroll-gallery::-webkit-scrollbar { display: none; }
+        
+        .gallery-item { 
+            flex: 0 0 92%; 
+            scroll-snap-align: center; 
+            position: relative;
+        }
+        .gallery-item img { 
+            width: 100%; 
+            height: 350px; 
+            object-fit: cover; 
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(15, 61, 102, 0.15);
+            transition: transform 0.3s ease;
+        }
+        .gallery-item img:active { transform: scale(0.98); }
+
+        /* COUNTER PILL */
+        .img-count { position: absolute; bottom: 15px; right: 15px; background: rgba(15, 61, 102, 0.7); backdrop-filter: blur(4px); color: white; padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; letter-spacing: 1px; }
+
+        /* LIGHTBOX */
+        .lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 61, 102, 0.98); z-index: 2000; justify-content: center; align-items: center; }
+        .lightbox img { max-width: 100%; max-height: 100vh; object-fit: contain; }
+        .close-btn { position: absolute; top: 30px; right: 25px; color: white; font-size: 40px; cursor: pointer; font-weight: 600; z-index: 2001; }
+
+        /* CTA BUTTON */
+        .cta-btn { background: var(--primary); color: white; text-align: center; padding: 18px; border-radius: 0; font-family: var(--font); letter-spacing: 1px; text-transform: uppercase; font-size: 16px; font-weight: 800; text-decoration: none; position: fixed; bottom: 0; left: 0; width: 100%; box-shadow: 0 -5px 20px rgba(15, 61, 102, 0.2); z-index: 90; }
+        .whatsapp-icon { color: white; font-weight: bold; margin-right: 8px; font-size: 18px; }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <img src="logo.jpg" alt="Logo" class="logo">
+        <div class="brand-name">SIERRA VISTA</div>
+    </div>
+
+    <div class="hero">
+        <img src="rest-1.jpg" alt="Resort Cover">
+        <div class="hero-overlay"></div>
+    </div>
+
+    <div class="container">
+        
+        <div style="padding: 20px 20px 0 20px; text-align:center;">
+            <h2 style="color:var(--primary); font-size: 22px;">Welcome to Sierra Vista</h2>
+            <p style="color: #666; margin-top:5px;">Direct Booking Rates (Taxes Included)</p>
+        </div>
+
+        <div class="section-title">Cottage 1</div>
+        <div class="price-tag">₹6,500 <span class="tax-note">(inc. tax)</span></div>
+        <p class="section-desc">Expansive views, king-sized comfort, and premium amenities.</p>
+        <div class="scroll-gallery">
+            <div class="gallery-item"><img src="c1-1.jpg" onclick="openLightbox(this)"></div>
+            <div class="gallery-item"><img src="c1-2.jpg" onclick="openLightbox(this)"></div>
+            <div class="gallery-item"><img src="c1-3.jpg" onclick="openLightbox(this)"></div>
+            <div class="gallery-item"><img src="c1-4.jpg" onclick="openLightbox(this)"></div>
+            <div class="gallery-item"><img src="c1-5.jpg" onclick="openLightbox(this)"></div>
+            <div class="gallery-item"><img src="c1-6.jpg" onclick="openLightbox(this)"></div>
+            <div class="gallery-item"><img src="c1-7.jpg" onclick="openLightbox(this)"></div>
+        </div>
+
+        <div class="section-title">Cottage 2</div>
+        <div class="price-tag">₹6,500 <span class="tax-note">(inc. tax)</span></div>
+        <p class="section-desc">Steps away from the water, offering a blend of modern design.</p>
+        <div class="scroll-gallery">
+            <div class="gallery-item"><img src="c3-1.jpg" onclick="openLightbox(this)"></div>
+            <div class="gallery-item"><img src="c3-2.jpg" onclick="openLightbox(this)"></div>
+            <div class="gallery-item"><img src="c3-3.jpg" onclick="openLightbox(this)"></div>
+            <div class="gallery-item"><img src="c3-4.jpg" onclick="openLightbox(this)"></div>
+            <div class="gallery-item"><img src="c3-5.jpg" onclick="openLightbox(this)"></div>
+            <div class="gallery-item"><img src="c3-6.jpg" onclick="openLightbox(this)"></div>
+            <div class="gallery-item"><img src="c3-7.jpg" onclick="openLightbox(this)"></div>
+        </div>
+
+        <div class="section-title">Cottage 3: Alpine Wood</div>
+        <div class="price-tag">₹5,000 <span class="tax-note">(inc. tax)</span></div>
+        <p class="section-desc">A cozy retreat facing the lush green lawn.</p>
+        <div class="scroll-gallery">
+            <div class="gallery-item"><img src="c2-1.jpg" onclick="openLightbox(this)"></div>
+            <div class="gallery-item"><img src="c2-2.jpg" onclick="openLightbox(this)"></div>
+            <div class="gallery-item"><img src="c2-3.jpg" onclick="openLightbox(this)"></div>
+            <div class="gallery-item"><img src="c2-4.jpg" onclick="openLightbox(this)"></div>
+        </div>
+ 
+
+        <div class="section-title">The Restaurant</div>
+        <p class="section-desc">Indoor dining with a warm ambiance for family meals.</p>
+        <div class="scroll-gallery">
+            <div class="gallery-item"><img src="rest-1.jpg" onclick="openLightbox(this)"></div>
+            <div class="gallery-item"><img src="rest-2.jpg" onclick="openLightbox(this)"></div>
+            <div class="gallery-item"><img src="rest-3.jpg" onclick="openLightbox(this)"></div>
+            <div class="gallery-item"><img src="rest-4.jpg" onclick="openLightbox(this)"></div>
+            <div class="gallery-item"><img src="rest-5.jpg" onclick="openLightbox(this)"></div>
+            <div class="gallery-item"><img src="rest-6.jpg" onclick="openLightbox(this)"></div>
+            <div class="gallery-item"><img src="rest-7.jpg" onclick="openLightbox(this)"></div>
+            <div class="gallery-item"><img src="rest-8.jpg" onclick="openLightbox(this)"></div>
+        </div>
+
+        <div class="section-title">Outdoor Experience</div>
+        <p class="section-desc">Lawn, Pool Deck, and magical Night Lighting.</p>
+        <div class="scroll-gallery">
+            <div class="gallery-item"><img src="out-1.jpg" onclick="openLightbox(this)"></div>
+            <div class="gallery-item"><img src="out-2.jpg" onclick="openLightbox(this)"></div>
+            <div class="gallery-item"><img src="out-3.jpg" onclick="openLightbox(this)"></div>
+            <div class="gallery-item"><img src="out-4.jpg" onclick="openLightbox(this)"></div>
+            <div class="gallery-item"><img src="out-5.jpg" onclick="openLightbox(this)"></div>
+            <div class="gallery-item"><img src="out-6.jpg" onclick="openLightbox(this)"></div>
+            <div class="gallery-item"><img src="out-7.jpg" onclick="openLightbox(this)"></div>
+        </div>
+
+        <div class="section-title">Culinary Highlights</div>
+        <p class="section-desc">Fresh ingredients and local flavors.</p>
+        <div class="scroll-gallery">
+            <div class="gallery-item"><img src="food-1.jpg" onclick="openLightbox(this)"></div>
+            <div class="gallery-item"><img src="food-2.jpg" onclick="openLightbox(this)"></div>
+            <div class="gallery-item"><img src="food-3.jpg" onclick="openLightbox(this)"></div>
+            <div class="gallery-item"><img src="food-4.jpg" onclick="openLightbox(this)"></div>
+            <div class="gallery-item"><img src="food-5.jpg" onclick="openLightbox(this)"></div>
+            <div class="gallery-item"><img src="food-6.jpg" onclick="openLightbox(this)"></div>
+            <div class="gallery-item"><img src="food-7.jpg" onclick="openLightbox(this)"></div>
+        </div>
+        
+        <br><br><br>
+    </div>
+
+    <a href="https://wa.me/91YOUR_NUMBER_HERE?text=Hi, I want to check availability for Cottage..." class="cta-btn">
+        <span class="whatsapp-icon">●</span> Check Availability
+    </a>
+
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <span class="close-btn">&times;</span>
+        <img id="lightbox-img" src="">
+    </div>
+
+    <script>
+        function openLightbox(imgElement) {
+            var lightbox = document.getElementById('lightbox');
+            var lightboxImg = document.getElementById('lightbox-img');
+            lightbox.style.display = 'flex';
+            lightboxImg.src = imgElement.src;
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+    </script>
+
+</body>
+</html>
