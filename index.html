@@ -3,318 +3,181 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sierra Vista | Boutique Hillside Resort and Multi-Cuisine Restaurant </title>
+    <title>Welcome to Sierra Vista</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         :root { 
             --primary: #0F3D66; 
-            --primary-light: #2C5A85;
-            --text: #333333; 
-            --bg: #F0F2F5; /* Light grey bg to make white cards pop */
             --white: #ffffff;
-            --border: #E5E5E5;
+            --bg: #F0F2F5;
             --font: 'Montserrat', sans-serif; 
         }
-        
-        body { font-family: var(--font); margin: 0; padding: 0; background: var(--bg); color: var(--text); padding-bottom: 80px; font-weight: 400; line-height: 1.6; }
-        h1, h2, h3, h4 { font-weight: 600; color: var(--primary); margin-top: 0; }
-        
-        /* HEADER */
-        .header { background: var(--white); padding: 15px 20px; display: flex; align-items: center; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
-        .logo { height: 40px; margin-right: 12px; } 
-        .brand-name { font-size: 18px; font-weight: 700; letter-spacing: 0.5px; color: var(--primary); text-transform: uppercase; }
 
-        /* CONTAINER - TIGHTER WIDTH */
-        .container { max-width: 850px; margin: auto; padding: 25px 20px; }
-        /* On mobile, add padding so cards don't touch edges */
-        @media (max-width: 600px) {
-            .container { padding: 20px 15px; } 
-        }
-
-        /* INTRO */
-        .intro-section { text-align: center; max-width: 600px; margin: 0 auto 30px auto; }
-        .intro-title { font-size: 24px; margin-bottom: 10px; }
-        .intro-text { color: #666; font-size: 14px; font-weight: 400; }
-        .icon-row { display: flex; justify-content: center; gap: 10px; margin-top: 20px; flex-wrap: wrap; }
-        .icon-item { font-size: 11px; font-weight: 600; color: var(--primary); background: white; padding: 6px 12px; border-radius: 50px; border: 1px solid #ddd; box-shadow: 0 2px 5px rgba(0,0,0,0.02); }
-
-        /* COMPACT CARD BLOCK */
-        .content-block { 
-            background: var(--white); 
-            border-radius: 16px; /* Soft corners */
-            padding: 20px; 
-            margin-bottom: 25px; 
-            display: grid; 
-            grid-template-columns: 1fr 1fr; 
-            gap: 25px;
+        body {
+            font-family: var(--font);
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg);
+            /* Optional: Add a background image of the resort here */
+            background-image: url('out-1.jpg'); 
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+            display: flex;
             align-items: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.04); /* Floating effect */
-            overflow: hidden;
+            justify-content: center;
         }
 
-        /* --- MOBILE OPTIMIZATIONS --- */
-        @media (max-width: 768px) {
-            .content-block { 
-                grid-template-columns: 1fr; /* Stack vertically */
-                gap: 15px; 
-                padding: 15px;
-            }
-            .gallery-wrapper { order: 1; }
-            .block-info { order: 2; }
-            
-            /* Tighter Mobile Image */
-            .main-image { height: 200px !important; } 
-            
-            .block-title { font-size: 20px; }
-            .block-subtitle { font-size: 18px; margin-bottom: 8px; }
+        /* Dark overlay to make text readable over the background image */
+        .overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(15, 61, 102, 0.85); /* Blue tint overlay */
+            backdrop-filter: blur(5px);
+            z-index: 0;
         }
 
-        /* TEXT SIDE */
-        .block-info { padding-top: 0; }
-        .block-title { font-size: 22px; margin-bottom: 4px; }
-        .block-subtitle { font-size: 18px; color: var(--text); font-weight: 500; margin-bottom: 12px; display: block; }
-        .block-desc { font-size: 13px; color: #555; margin-bottom: 15px; line-height: 1.6; font-weight: 400; }
-        .inclusions { font-size: 11px; color: #888; background: #f9f9f9; padding: 5px 10px; border-radius: 4px; display: inline-block; border: 1px solid #eee; }
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            width: 100%;
+            max-width: 400px;
+            margin: 20px;
+            padding: 40px 30px;
+            border-radius: 24px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 1;
+        }
 
-        /* IMAGE SIDE */
-        .gallery-wrapper { width: 100%; }
-        .main-image { 
-            width: 100%; 
-            height: 280px; /* Desktop Height */
-            object-fit: cover; 
-            border-radius: 12px; /* Matching rounded look */
-            cursor: pointer; 
-            margin-bottom: 8px;
-            background-color: #eee;
+        .logo {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 15px;
+            border: 3px solid var(--primary);
+        }
+
+        h1 {
+            color: var(--primary);
+            font-size: 22px;
+            margin: 0 0 5px 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        p {
+            color: #666;
+            font-size: 14px;
+            margin: 0 0 30px 0;
+        }
+
+        .btn-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .link-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: white;
+            color: var(--primary);
+            text-decoration: none;
+            padding: 16px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 15px;
+            border: 1px solid #ddd;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .link-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+            border-color: var(--primary);
+        }
+
+        /* Special styling for primary actions */
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            border: 1px solid var(--primary);
         }
         
-        .image-reel { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 5px; -webkit-overflow-scrolling: touch; }
-        .image-reel::-webkit-scrollbar { display: none; }
-        .reel-thumb { flex: 0 0 50px; height: 50px; object-fit: cover; border-radius: 8px; cursor: pointer; opacity: 0.8; }
-        .reel-thumb:active { opacity: 0.5; }
+        .btn-primary:hover {
+            background: #2C5A85; /* Lighter blue */
+        }
 
-        /* FAQ */
-        .faq-section { max-width: 600px; margin: 0 auto 40px auto; background: white; padding: 20px; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.04); }
-        .faq-item { border-bottom: 1px solid #f0f0f0; }
-        .faq-item:last-child { border-bottom: none; }
-        details { padding: 12px 0; cursor: pointer; }
-        summary { font-weight: 600; color: var(--primary); outline: none; list-style: none; display: flex; justify-content: space-between; font-size: 13px; }
-        summary::after { content: '+'; font-weight: 300; font-size: 16px; }
-        details[open] summary::after { content: '-'; }
-        .faq-content { font-size: 13px; color: #666; margin-top: 8px; line-height: 1.5; }
-
-        /* FOOTER */
-        .footer { background: var(--primary); color: white; padding: 40px 20px; text-align: center; font-size: 13px; font-weight: 300; margin-top: 20px; }
-        .map-box { width: 100%; height: 180px; margin: 20px auto; background: #224a75; border-radius: 12px; overflow: hidden; }
-        .map-box iframe { width: 100%; height: 100%; border: 0; opacity: 0.8; }
+        .footer {
+            margin-top: 30px;
+            font-size: 12px;
+            color: #888;
+        }
         
-        /* CTA BAR */
-        .cta-bar { position: fixed; bottom: 0; left: 0; width: 100%; background: var(--white); border-top: 1px solid #ddd; padding: 12px 20px; display: flex; justify-content: center; box-shadow: 0 -2px 10px rgba(0,0,0,0.05); z-index: 99; }
-        .book-btn { background: var(--primary); color: white; padding: 12px 0; width: 100%; max-width: 350px; text-align: center; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 14px; letter-spacing: 0.5px; display: flex; justify-content: center; align-items: center; box-shadow: 0 4px 10px rgba(15, 61, 102, 0.2); }
-        .whatsapp-icon { margin-right: 8px; font-size: 18px; }
+        .social-links {
+            margin-top: 15px;
+        }
+        .social-links a {
+            color: var(--primary);
+            font-size: 20px;
+            margin: 0 8px;
+            text-decoration: none;
+        }
 
-        /* LIGHTBOX */
-        .lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 61, 102, 0.98); z-index: 2000; justify-content: center; align-items: center; }
-        .lightbox img { max-width: 90%; max-height: 80vh; border-radius: 8px; box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
-        .close-btn { position: absolute; top: 20px; right: 20px; color: white; font-size: 30px; cursor: pointer; }
     </style>
 </head>
 <body>
 
-    <div class="header">
-        <img src="logo.jpg" alt="Logo" class="logo">
-        <div class="brand-name">Sierra Vista</div>
-    </div>
+    <div class="overlay"></div>
 
-    <div class="container">
+    <div class="card">
+        <img src="logo.jpg" alt="Sierra Vista" class="logo">
         
-        <div class="intro-section">
-            <h1 class="intro-title">Welcome to Sierra Vista</h1>
-            <p class="intro-text">
-                A serene hillside sanctuary just 15 minutes from the sacred Trimbakeshwar Temple. 
-                Experience luxury cottages, a celebrated restaurant, and lush outdoor living—all just a short drive from Nashik.
-            </p>
-            <div class="icon-row">
-                <div class="icon-item"><i class="fas fa-water"></i> Pool</div>
-                <div class="icon-item"><i class="fas fa-paw"></i> Pet Friendly</div>
-                <div class="icon-item"><i class="fas fa-utensils"></i> Restaurant</div>
-            </div>
+        <h1>Sierra Vista</h1>
+        <p>Resort & Multi-Cuisine Restaurant</p>
+
+        <div class="btn-stack">
+            
+            <a href="menu.pdf" class="link-btn">
+                <i class="fas fa-book-open"></i> View Restaurant Menu
+            </a>
+
+            <a href="resort.html" class="link-btn">
+                <i class="fas fa-home"></i> Cottages & Prices
+            </a>
+
+            <a href="https://wa.me/919822034875" class="link-btn btn-primary">
+                <i class="fab fa-whatsapp"></i> Book a Stay
+            </a>
+
+            <a href="https://goo.gl/maps/YOUR_GOOGLE_MAPS_LINK_HERE" class="link-btn">
+                <i class="fas fa-location-dot"></i> Get Directions
+            </a>
+
+            <a href="https://forms.google.com/YOUR_FORM_LINK" class="link-btn">
+                <i class="far fa-star"></i> Send Feedback
+            </a>
+
         </div>
 
-        <div class="content-block">
-            <div class="gallery-wrapper">
-                <img src="c1-1.jpg" class="main-image" id="main-c1" onclick="openLightbox(this)">
-                <div class="image-reel">
-                    <img src="c1-1.jpg" class="reel-thumb" onclick="swapImage('main-c1', this.src)">
-                    <img src="c1-2.jpg" class="reel-thumb" onclick="swapImage('main-c1', this.src)">
-                    <img src="c1-3.jpg" class="reel-thumb" onclick="swapImage('main-c1', this.src)">
-                    <img src="c1-4.jpg" class="reel-thumb" onclick="swapImage('main-c1', this.src)">
-                    <img src="c1-5.jpg" class="reel-thumb" onclick="swapImage('main-c1', this.src)">
-                    <img src="c1-6.jpg" class="reel-thumb" onclick="swapImage('main-c1', this.src)">
-                </div>
-            </div>
-            <div class="block-info">
-                <h2 class="block-title">Cottage 1</h2>
-                <span class="block-subtitle">₹6,500 / night</span>
-                <p class="block-desc">
-                    Our signature white villa featuring a classic tiled roof and a sweeping veranda. 
-                    Inside, enjoy king-sized comfort and premium linens. Ideal for families.
-                </p>
-                <div class="inclusions">Breakfast • Tax • Parking</div>
+        <div class="footer">
+            © 2026 Sierra Vista Resort<br>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
             </div>
         </div>
-
-        <div class="content-block">
-            <div class="gallery-wrapper">
-                <img src="c3-1.jpg" class="main-image" id="main-c2" onclick="openLightbox(this)">
-                <div class="image-reel">
-                    <img src="c3-1.jpg" class="reel-thumb" onclick="swapImage('main-c2', this.src)">
-                    <img src="c3-2.jpg" class="reel-thumb" onclick="swapImage('main-c2', this.src)">
-                    <img src="c3-3.jpg" class="reel-thumb" onclick="swapImage('main-c2', this.src)">
-                    <img src="c3-4.jpg" class="reel-thumb" onclick="swapImage('main-c2', this.src)">
-                </div>
-            </div>
-            <div class="block-info">
-                <h2 class="block-title">Cottage 2</h2>
-                <span class="block-subtitle">₹6,500 / night</span>
-                <p class="block-desc">
-                    Tucked away amidst bougainvillea and lush greens. This white cottage features large windows for natural light.
-                </p>
-                <div class="inclusions">Breakfast • Tax • Parking</div>
-            </div>
-        </div>
-
-        <div class="content-block">
-            <div class="gallery-wrapper">
-                <img src="c2-1.jpg" class="main-image" id="main-c3" onclick="openLightbox(this)">
-                <div class="image-reel">
-                    <img src="c2-1.jpg" class="reel-thumb" onclick="swapImage('main-c3', this.src)">
-                    <img src="c2-2.jpg" class="reel-thumb" onclick="swapImage('main-c3', this.src)">
-                    <img src="c2-3.jpg" class="reel-thumb" onclick="swapImage('main-c3', this.src)">
-                    <img src="c2-4.jpg" class="reel-thumb" onclick="swapImage('main-c3', this.src)">
-                </div>
-            </div>
-            <div class="block-info">
-                <h2 class="block-title">Cottage 3: Alpine Wood</h2>
-                <span class="block-subtitle">₹5,000 / night</span>
-                <p class="block-desc">
-                    A unique Alpine-style wooden cabin. It features warm timber interiors, a cozy front deck, 
-                    and a distinct rustic charm. Perfect for couples.
-                </p>
-                <div class="inclusions">Breakfast • Tax • Parking</div>
-            </div>
-        </div>
-
-        <div class="content-block">
-            <div class="gallery-wrapper">
-                <img src="IMG_0957.jpg" class="main-image" id="main-rest" onclick="openLightbox(this)">
-                <div class="image-reel">
-                    <img src="IMG_0957.jpg" class="reel-thumb" onclick="swapImage('main-rest', this.src)">
-                    <img src="rest-2.jpg" class="reel-thumb" onclick="swapImage('main-rest', this.src)">
-                    <img src="rest-3.jpg" class="reel-thumb" onclick="swapImage('main-rest', this.src)">
-                    <img src="rest-1.jpg" class="reel-thumb" onclick="swapImage('main-rest', this.src)">
-                </div>
-            </div>
-            <div class="block-info">
-                <h2 class="block-title">The Restaurant</h2>
-                <span class="block-subtitle">Culinary Experience</span>
-                <p class="block-desc">
-                    High ceilings, exposed brick walls, and industrial lighting create a grand ambience. 
-                    Enjoy multi-cuisine delights prepared with fresh ingredients.
-                </p>
-                <div class="inclusions" style="background: #eef3f8; color: var(--primary);">8:00 AM - 12:00 PM</div>
-            </div>
-        </div>
-
-        <div class="content-block">
-            <div class="gallery-wrapper">
-                <img src="out-1.jpg" class="main-image" id="main-out" onclick="openLightbox(this)">
-                <div class="image-reel">
-                    <img src="out-1.jpg" class="reel-thumb" onclick="swapImage('main-out', this.src)">
-                    <img src="out-2.jpg" class="reel-thumb" onclick="swapImage('main-out', this.src)">
-                    <img src="out-3.jpg" class="reel-thumb" onclick="swapImage('main-out', this.src)">
-                    <img src="out-4.jpg" class="reel-thumb" onclick="swapImage('main-out', this.src)">
-                    <img src="out-5.jpg" class="reel-thumb" onclick="swapImage('main-out', this.src)">
-                    <img src="out-6.jpg" class="reel-thumb" onclick="swapImage('main-out', this.src)">
-                </div>
-            </div>
-            <div class="block-info">
-                <h2 class="block-title">Outdoor Living</h2>
-                <span class="block-subtitle">Pool & Lawns</span>
-                <p class="block-desc">
-                    Relax by our sparkling swimming pool or take a stroll on the expansive green lawns.
-                    The property lights up beautifully at night.
-                </p>
-            </div>
-        </div>
-
-        <div class="faq-section">
-            <h3 style="text-align:center; font-size: 18px; margin-bottom: 15px;">Questions</h3>
-            <div class="faq-item">
-                <details>
-                    <summary>What is the distance to the temple?</summary>
-                    <div class="faq-content">We are a 15-minute drive from Trimbakeshwar Temple.</div>
-                </details>
-            </div>
-            <div class="faq-item">
-                <details>
-                    <summary>Is there parking?</summary>
-                    <div class="faq-content">Yes, secure parking is available inside.</div>
-                </details>
-            </div>
-            <div class="faq-item">
-                <details>
-                    <summary>Are pets allowed?</summary>
-                    <div class="faq-content">Yes, we are very pet friendly!</div>
-                </details>
-            </div>
-        </div>
-
-<div class="footer" style="background-color: white; color: black; padding: 20px; text-align: center;">
-    <h4>SIERRA VISTA RESORT AND RESTAURANT</h4>
-    <p>Talegaon, Trimbakeshwar Road, Nashik - 422213</p>
-    
-    <div class="map-box">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3750.3540554014025!2d73.63523398881563!3d19.95160717606286!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bddf38bc7505cc9%3A0x98128d1346a812a!2sSierra%20Vista!5e0!3m2!1sen!2sin!4v1766046301459!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-    </div>
-    
-    <p style="font-size: 16px; margin-top: 15px;">+91 98220 34875</p>
-    <p style="font-size: 16px; margin-top: 15px;">+91 77966 96693</p>
-</div>
-
     </div>
 
-    <div class="cta-bar">
-        <a href="https://wa.me/919822034875" class="book-btn">
-            <i class="fab fa-whatsapp whatsapp-icon"></i> Check Availability
-        </a>
-    </div>
-
-    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
-        <span class="close-btn">×</span>
-        <img id="lightbox-img" src="">
-    </div>
-
-    <script>
-        function swapImage(mainId, src) {
-            document.getElementById(mainId).src = src;
-        }
-        
-        function openLightbox(imgElement) {
-            var lightbox = document.getElementById('lightbox');
-            var lightboxImg = document.getElementById('lightbox-img');
-            lightbox.style.display = 'flex';
-            lightboxImg.src = imgElement.src;
-        }
-
-        function closeLightbox() {
-            document.getElementById('lightbox').style.display = 'none';
-        }
-    </script>
 </body>
 </html>
