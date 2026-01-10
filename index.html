@@ -53,14 +53,16 @@
             position: relative;
             z-index: 1;
         }
-
+        
         .logo {
-            width: 220px;       /* Made it wider to see the text clearly */
-            height: auto;       /* Keeps the original shape (doesn't squish it) */
-            margin-bottom: 20px;
-            border-radius: 0;   /* Removes the circle cut */
-            border: none;       /* Removes the blue ring */
-        }
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 15px;
+            border: 1px solid var(--primary);
+
+        
 
         h1 {
             color: var(--primary);
