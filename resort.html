@@ -114,9 +114,44 @@
         .map-box iframe { width: 100%; height: 100%; border: 0; opacity: 0.8; }
         
         /* CTA BAR */
-        .cta-bar { position: fixed; bottom: 0; left: 0; width: 100%; background: var(--white); border-top: 1px solid #ddd; padding: 12px 20px; display: flex; justify-content: center; box-shadow: 0 -2px 10px rgba(0,0,0,0.05); z-index: 99; }
+        /*.cta-bar { position: fixed; bottom: 0; left: 0; width: 100%; background: var(--white); border-top: 1px solid #ddd; padding: 12px 20px; display: flex; justify-content: center; box-shadow: 0 -2px 10px rgba(0,0,0,0.05); z-index: 99; }
         .book-btn { background: var(--primary); color: white; padding: 12px 0; width: 100%; max-width: 350px; text-align: center; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 14px; letter-spacing: 0.5px; display: flex; justify-content: center; align-items: center; box-shadow: 0 4px 10px rgba(15, 61, 102, 0.2); }
-        .whatsapp-icon { margin-right: 8px; font-size: 18px; }
+        .whatsapp-icon { margin-right: 8px; font-size: 18px; }*/
+        <style>
+    /* 1. The Container: Centers the button */
+    .cta-bar {
+        display: flex;            /* Enables flexible positioning */
+        justify-content: center;  /* Centers the button horizontally in the middle */
+        align-items: center;      /* Centers vertically */
+        padding: 10px;            /* Adds space around the button */
+        width: 100%;
+    }
+
+    /* 2. The Button: Controls the size */
+    .book-btn {
+        /* Size Adjustments */
+        padding: 8px 24px;       /* Reduced padding (Top/Bottom 8px, Left/Right 24px) */
+        font-size: 14px;         /* Slightly smaller text (adjust as needed) */
+        width: auto;             /* Prevents full-width stretching */
+        max-width: 90%;          /* Ensures it doesn't touch phone edges */
+        
+        /* Visual Styles (Standard styling) */
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;                /* Space between WhatsApp icon and text */
+        background-color: #25D366; /* WhatsApp Green */
+        color: white;
+        text-decoration: none;
+        border-radius: 50px;     /* Makes it pill-shaped/rounded */
+        font-weight: bold;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    
+    /* Optional: Ensure icon is sized correctly */
+    .whatsapp-icon {
+        font-size: 16px;
+    }
+</style>
 
         /* LIGHTBOX */
         .lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 61, 102, 0.98); z-index: 2000; justify-content: center; align-items: center; }
